@@ -1,0 +1,2 @@
+model_checkpoint_path: "ai_bird-dqn-9999"
+all_model_checkpoint_paths: "ai_bird-dqn-9999"
