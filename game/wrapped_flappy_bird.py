@@ -21,7 +21,7 @@ FPSCLOCK = pygame.time.Clock()
 SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
 pygame.display.set_caption('Flappy Bird')
 
-IMAGES, SOUNDS, HITMASKS = flappy_bird_utils.load()
+IMAGES, HITMASKS = flappy_bird_utils.load()
 PIPEGAPSIZE = 100 # gap between upper and lower part of pipe
 BASEY = SCREENHEIGHT * 0.79
 
@@ -77,7 +77,6 @@ class GameState:
             if self.playery > -2 * PLAYER_HEIGHT:
                 self.playerVelY = self.playerFlapAcc
                 self.playerFlapped = True
-                #SOUNDS['wing'].play()
 
         # check for score
         playerMidPos = self.playerx + PLAYER_WIDTH / 2
@@ -85,7 +84,6 @@ class GameState:
             pipeMidPos = pipe['x'] + PIPE_WIDTH / 2
             if pipeMidPos <= playerMidPos < pipeMidPos + 4:
                 self.score += 1
-                #SOUNDS['point'].play()
                 reward = 1
 
         # playerIndex basex change
@@ -124,8 +122,6 @@ class GameState:
                              'index': self.playerIndex},
                             self.upperPipes, self.lowerPipes)
         if isCrash:
-            #SOUNDS['hit'].play()
-            #SOUNDS['die'].play()
             terminal = True
             self.__init__()
             reward = -1
